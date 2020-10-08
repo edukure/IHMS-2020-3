@@ -76,9 +76,9 @@ namespace _6
         {
             double[] vetorTemplate = new double[3];
             
-            double mav = vetores.Sum(vetor => vetor[0])/vetores.Count();
-            double autoCorrAbs = vetores.Sum(vetor => vetor[1])/vetores.Count();
-            double stdAbs = vetores.Sum(vetor => vetor[2])/vetores.Count();
+            double mav = vetores.Sum(vetor => vetor[0])/vetores.Count;
+            double autoCorrAbs = vetores.Sum(vetor => vetor[1])/vetores.Count;
+            double stdAbs = vetores.Sum(vetor => vetor[2])/vetores.Count;
             
             vetorTemplate[0] = mav;
             vetorTemplate[1] = autoCorrAbs;
