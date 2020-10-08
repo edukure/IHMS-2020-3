@@ -31,15 +31,16 @@ namespace winforms_7
         public async Task MainTask()
         {
             //2 eventos 7 (rotação) adicionados depois do evento 3 para que LEFT -> RIGHT
+            //entre o segundo e terceiro evento 7, foi colocando um STAND_BY para poder diferenciar
             //para simulação ficar de acordo com o gráfico e a máquina de estados
-            //Simulação                    1, 2, 1, 6, 1, 5, 1, 7, 3, 1, 7, 7, 4, 1
-            int[] StateChanX = new int[] { 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0 };
-            int[] StateChanY = new int[] { 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0 };
+            //Simulação                    1, 2, 1, 6, 1, 5, 1, 7, 3, 1, 7, 1, 7, 4, 1
+            int[] StateChanX = new int[] { 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0 };
+            int[] StateChanY = new int[] { 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0 };
 
             //                          STAND_BY, DOWN, STAND_BY, UP, STAND_BY, CLICK, 
             double[] th = new double[] { 400,     400,   400,     400,    400,   200,
-             //STAND_BY ,ROTATE, LEFT, STAND_BY, ROTATE, ROTATE, STAND_BY, RIGHT, STAND_BY   
-                400,        200,   400,    400,    200,   200,    400,      400,    400 };
+             //STAND_BY ,ROTATE, LEFT, STAND_BY, ROTATE, STAND_BY, ROTATE, STAND_BY, RIGHT, STAND_BY   
+                400,        200,   400,    400,    200,   400,      200,    400,      400,    400 };
             int counter = 0;
 
             string currentDirection = "DOWN";
