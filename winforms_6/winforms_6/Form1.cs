@@ -53,6 +53,7 @@ namespace winforms_6
             int windowSize = Convert.ToInt32(Math.Floor(w * fs / 1000));
             int nWindows = Convert.ToInt32(Math.Floor(Convert.ToDouble(xn.Length) / windowSize));
 
+     
             VetorCaracteristico vetorTemplate;
 
             List<VetorCaracteristico> vetoresDeCaracteristica = new List<VetorCaracteristico>();
@@ -63,7 +64,7 @@ namespace winforms_6
             {
                 index = currentWindow * windowSize;
                 double[] window = new double[windowSize];
-                for (int k = index, windowIndex = 0; k < index + windowSize; k++)
+                for (int k = index, windowIndex = 0; windowIndex < windowSize; k++, windowIndex++)
                 {
                     window[windowIndex] = xn[k];
                 }
@@ -110,7 +111,7 @@ namespace winforms_6
 
             //change this to async?? performance is really low
             UpdateChart(values);
-            
+
         }
 
         private void fsInput_TextChanged(object sender, EventArgs e)

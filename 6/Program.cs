@@ -11,16 +11,14 @@ namespace _6
         {
             Console.WriteLine("Exercício 6\n");
             
-            List<double[]> test = new List<double[]>();
-            test.Add(new double[3]{1.0, 2.0, 3.0});
-            test.Add(new double[3]{1.0, 2.0, 3.0});
-            test.Add(new double[3]{1.0, 2.0, 3.0});
-            test.Add(new double[3]{1.0, 2.0, 3.0});
-            test.Add(new double[3]{1.0, 2.0, 3.0});
+            double w = 50; //tamanho da janela em ms
+            double fs = 500; //frequencia de amostragem
+            double time = 10; //tempo total
 
-            Console.WriteLine(VetorTemplate(test)[0]);
-            Console.WriteLine(VetorTemplate(test)[1]);
-            Console.WriteLine(VetorTemplate(test)[2]);
+            double[] noise = GenerateNoise(time, fs);
+            double limiar = Limiar(noise, w, fs);
+            Console.WriteLine(limiar);
+            
         }
 
         static double Limiar(double[] xn, double w, double fs)
@@ -40,11 +38,28 @@ namespace _6
 
             //separação das janelas e cálculo do vetor característico para cada janela
             //o operador Range " .. " está disponível apenas a partir do C# 8.0
-            int index;
+            // int index;
+            // for (int currentWindow = 0; currentWindow < nWindows; currentWindow++)
+            // {
+            //     index = currentWindow * windowSize;
+            //     double[] window = new double[windowSize];
+            //     for (int k = index, windowIndex = 0; k < index + windowSize; k++, windowIndex++)
+            //     {
+            //         window[windowIndex] = xn[k];
+            //     }
+
+            //     vetoresDeCaracteristica.Add(new VetorCaracteristico(window));
+            // }
+
+             int index;
             for(int currentWindow= 0; currentWindow < nWindows; currentWindow++)
             {
                 index = currentWindow * windowSize;
-                double[] window = xn[index..(index + windowSize)];
+                double[] window = new double[windowSize];
+                for (int k = index, windowIndex = 0; k < index + windowSize; k++, windowIndex++)
+                {
+                    window[windowIndex] = xn[k];
+                }
                 vetoresDeCaracteristica.Add(VetorCaracteristico(window)); 
             }
 
@@ -84,6 +99,10 @@ namespace _6
             vetorTemplate[1] = autoCorrAbs;
             vetorTemplate[2] = stdAbs;
 
+            System.Console.WriteLine(vetorTemplate[0]);
+            System.Console.WriteLine(vetorTemplate[1]);
+            System.Console.WriteLine(vetorTemplate[2]);
+
             return vetorTemplate;
         }
 
@@ -113,6 +132,8 @@ namespace _6
             }
 
             return noise;
+
+            
         }
     }
 }

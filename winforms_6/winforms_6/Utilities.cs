@@ -12,9 +12,9 @@ namespace winforms_6
         {
             double soma = 0;
 
-            soma += p.MAV - q.MAV;
-            soma += p.AutoCorrAbs - q.AutoCorrAbs;
-            soma += p.StdAbs - q.StdAbs;
+            soma += Math.Pow(p.MAV - q.MAV,2);
+            soma += Math.Pow(p.AutoCorrAbs - q.AutoCorrAbs,2);
+            soma += Math.Pow(p.StdAbs - q.StdAbs, 2);
 
             double distancia = Math.Sqrt(soma);
 
@@ -40,6 +40,7 @@ namespace winforms_6
             }
 
             return sum;
+
         }
 
         public static double StdAbs(double[] s)

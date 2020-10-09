@@ -33,7 +33,7 @@ public static class Utilities
         double sum = 0;
 
         //equação fornecida pelo exercício
-        for(int k = 0; k < s.Length - m; k++)
+        for(int k = 0; k < s.Count() - m; k++)
         {
             sum += Math.Abs(s[k]) * Math.Abs(s[k+m]); 
         }
