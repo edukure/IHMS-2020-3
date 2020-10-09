@@ -2,12 +2,8 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using LiveCharts; // biblioteca gráfica https://lvcharts.net/
-using LiveCharts.Wpf; // biblioteca gráfica https://lvcharts.net/
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace winforms_7
 {
@@ -32,6 +28,8 @@ namespace winforms_7
         {
             //2 eventos 7 (rotação) adicionados depois do evento 3 para que LEFT -> RIGHT
             //entre o segundo e terceiro evento 7, foi colocando um STAND_BY para poder diferenciar
+            //visto que não é possível realizar 2 ROTATEs seguidos sem outro comando o meio
+        
             //para simulação ficar de acordo com o gráfico e a máquina de estados
             //Simulação                    1, 2, 1, 6, 1, 5, 1, 7, 3, 1, 7, 1, 7, 4, 1
             int[] StateChanX = new int[] { 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0 };
@@ -50,8 +48,6 @@ namespace winforms_7
             {
                 while (counter < StateChanX.Length)
                 {
-
-
                     if (StateChanX[counter] == 1 && StateChanY[counter] == 0 & th[counter] >= 400)
                     {
                         RotacionaCursor(currentDirection);
@@ -105,10 +101,6 @@ namespace winforms_7
                     ChangeText(EventLabel, currentEvent);
 
                     counter = counter + 1;
-
-
-
-
 
                     Thread.Sleep(1000);
                 }
